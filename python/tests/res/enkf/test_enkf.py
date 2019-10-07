@@ -38,6 +38,9 @@ class EnKFTest(ResTest):
         self.case_directory = self.createTestPath("local/simple_config/")
         self.case_directory_custom_kw = self.createTestPath("local/snake_oil/")
 
+    def tearDown(self):
+        import gc
+        gc.collect()
 
     def test_repr( self ):
         with TestAreaContext("enkf_test", store_area=True) as work_area:

@@ -37,6 +37,10 @@ class EnKFRunpathTest(ResTest):
     def setUp(self):
         pass
 
+    def tearDown(self):
+        import gc
+        gc.collect()
+
     def test_with_gen_kw(self):
         case_directory = self.createTestPath('local/snake_oil_no_data/')
         with TestAreaContext('test_enkf_runpath', store_area=True) as work_area:
