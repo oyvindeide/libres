@@ -25,6 +25,7 @@ from res.analysis import AnalysisModule, AnalysisModuleLoadStatusEnum, AnalysisM
 from res.enkf import MeasData , ObsData
 
 import res
+import pytest
 
 
 def forward_model(params , model_error = False):
@@ -95,9 +96,9 @@ class RMLTest(ResTest):
         self.assertEnumIsFullyDefined(AnalysisModuleLoadStatusEnum, "analysis_module_load_status_enum", source_file_path)
 
 
-
-
+    @pytest.mark.usefixtures("use_tmpdir")
     def test_analysis_module(self):
+
         rng = RandomNumberGenerator( )
         module = self.createAnalysisModule()
         ens_size = 12

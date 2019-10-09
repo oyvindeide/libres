@@ -40,6 +40,7 @@ class LoadResultsManuallyTest(ResTest):
             self.assertEqual(25, len(expected))
             self.assertEqual(25, len(realisations))
 
+    @pytest.mark.usefixtures("use_tmpdir")
     def test_load_results_from_run_context(self):
         with ErtTestContext("manual_load_test", self.config_file) as test_context:
             ert = test_context.getErt()

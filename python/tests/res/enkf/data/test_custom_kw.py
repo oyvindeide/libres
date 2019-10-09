@@ -1,4 +1,7 @@
 import os
+
+import pytest
+
 from res.enkf.enums import EnkfRunType
 from res.enkf import ErtRunContext
 from res.enkf.config import CustomKWConfig
@@ -78,7 +81,7 @@ class CustomKWTest(ResTest):
                 self.assertFalse( "VALUE_3" in custom_kw_config )
 
 
-
+    @pytest.mark.usefixtures("use_tmpdir")
     def test_simulated_custom_kw(self):
         config = self.createTestPath("local/custom_kw/mini_config")
         with ErtTestContext("python/enkf/data/custom_kw_simulated", config) as context:

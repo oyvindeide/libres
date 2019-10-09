@@ -14,6 +14,14 @@ def source_root():
     raise RuntimeError('Cannot find the source folder')
 
 
+@pytest.fixture()
+def use_tmpdir(tmpdir):
+    previous_folder = os.getcwd()
+    tmpdir.chdir()
+    yield
+    os.chdir(previous_folder)
+
+
 def has_equinor_test_data():
     return os.path.isdir(os.path.join(source_root(), "test-data", "Equinor"))
 
